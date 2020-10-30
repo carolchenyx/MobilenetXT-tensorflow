@@ -151,8 +151,27 @@ class LayerProvider:
                 print("")
         return output
 
+    def convb(self, input, k_h, k_w, c_o, stride, name, relu=True):
 
-        
+        with slim.arg_scope([slim.batch_norm], decay=0.999, fused=True, is_training=self.is4Train):
+            output = slim.convolution2d(
+                inputs=input,
+                num_outputs=c_o,
+                kernel_size=[k_h, k_w],
+                stride=stride,
+                normalizer_fn=slim.batch_norm,
+                weights_regularizer=self.l2_regularizer,
+                weights_initializer=self.init_xavier,
+                biases_initializer=self.init_zero,
+                activation_fn=tf.nn.relu if relu else None,
+                scope=name,
+                trainable=self.is4Train)
+
+        return output
+
+
+
+
 def _dwise_conv(inputs, k_h=3, k_w=3, depth_multiplier=1, strides=(1, 1),
                 padding='SAME', name='dwise_conv', use_bias=False,
                 reuse=None):
