@@ -1,0 +1,10 @@
+matplotlib
+opencv-python
+requests
+panda
+torch==1.1.0
+pillow
+#tensorflow==1.14.0
+#torchvision==0.3.0
+scipy
+

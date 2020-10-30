@@ -1,24 +1,21 @@
 import tensorflow as tf
-from opt import opt
-from src.models.outputlayer import finallayerforoffsetoption
-from src.models.Layerprovider_NX import LayerProvider
+from LayersXT import LayerProvider
 
 
 
 
-class PoseNetNX:
+class MobileNetXT:
 
     def __init__(self,shape, is4Train, mobilenetVersion=1, totalJoints=opt.totaljoints):
 
         tf.reset_default_graph()# 利用这个可清空default graph以及nodes
 
         lProvider = LayerProvider(is4Train)
-        outputlayer = finallayerforoffsetoption()
 
         adaptChannels = lambda totalLayer: int(mobilenetVersion * totalLayer)
 
         self.inputImage = tf.placeholder(tf.float32, shape=shape, name='Image')
-        self.transtrain = opt.isTrainpre
+        self.transtrain = True
 
         output = lProvider.convb(self.inputImage, 3, 3, adaptChannels(32), 2, "1-conv-32-2-1", relu=True)
         print("1-conv-32-2-1 : " + str(output.shape))
