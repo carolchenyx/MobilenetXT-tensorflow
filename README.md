@@ -14,3 +14,5 @@ Reproduce mobilenetxt with tensorflow
  
     $ pip install -r requirement.txt
     $ python run.py
+
+#### After training of this model, the weight of the model is more larger than mobinetv2. The channels of this network are too large. 
