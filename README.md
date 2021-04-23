@@ -10,7 +10,7 @@ Reproduce mobilenetxt with tensorflow
  
  
 ## RUN
-#### If you want to run the demo code for classification, you need to prepare the enviroment fisrt according to the requirement.
+#### If you want to run the demo code for classification, you need to prepare the environment fisrt according to the requirement.
  
     $ pip install -r requirement.txt
     $ python run.py
